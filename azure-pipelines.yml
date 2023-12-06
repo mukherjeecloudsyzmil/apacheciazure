@@ -7,12 +7,6 @@ pool:
 jobs:
 - job: DeployToAzureVM
   steps:
-  - task: UseDotNet@2
-    inputs:
-      packageType: 'sdk'
-      version: '3.1.x'
-      installationPath: $(Agent.ToolsDirectory)/dotnet
-
   - script: |
       sudo apt-get update
       sudo apt-get install -y apache2
@@ -27,6 +21,6 @@ jobs:
       scriptType: 'bash'
       scriptInline: |
         git clone https://github.com/mukherjeecloudsyzmil/psohtml.git
-        sudo cp -r your-repository/* /var/www/html/
+        sudo cp -r psohtml/* /var/www/html/
         sudo systemctl restart apache2
     displayName: 'Clone and Deploy HTML to Azure VM'
