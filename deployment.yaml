@@ -32,12 +32,6 @@ jobs:
       artifactName: 'publishedWebsite'
       publishLocation: 'Container'
 
-  - task: DownloadSecureFile@1
-    name: sshKey
-    displayName: 'Download SSH private key'
-    inputs:
-      secureFile: 'your-ssh-key'
-
   - task: SSH@0
     inputs:
       host: '20.0.8.103'
@@ -57,7 +51,7 @@ jobs:
         sudo systemctl enable apache2
 
         # Clone the GitHub repository (replace with your repository URL)
-        git clone https://github.com/mukherjeecloudsyzmil/psohtml.git
+        git clone https://your-username:your-password@github.com/your-username/your-repository.git
 
         # Copy HTML files to the default Apache web directory
         sudo cp -r your-repository/* /var/www/html/
